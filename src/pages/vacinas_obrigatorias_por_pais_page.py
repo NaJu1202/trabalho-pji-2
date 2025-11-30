@@ -15,6 +15,7 @@ class VacinasObrigatoriasPorPaisPage:
                 label="Selecione o país",
                 placeholder="Digite o nome do país",
                 options=(self.connection_db.controler_pais.consultar_paises()),
+                key="pais-filtrado-pesquisa"
             )
 
             if pais_filtrado:
@@ -26,47 +27,47 @@ class VacinasObrigatoriasPorPaisPage:
                     )
                 )
 
-                if not resultado:
+                if not resultado[1]:
                     st.write("Nenhuma vacina foi encontrada para o país selecionado.")
                 else:
-                    st.dataframe(data=resultado)
+                    st.dataframe(data=resultado[0])
 
-            st.title("Cadastrar uma nova vacina: ")
+            btn_cadastro = st.button(label="Deseja cadastrar uma vacina obrigatoria?")
+            if btn_cadastro:
+                st.title("Cadastrar uma nova vacina: ")
 
-            pais = pais_filtrado = st.selectbox(
-                label="Selecione o país",
-                placeholder="Digite o nome do país",
-                options=(self.connection_db.controler_pais.consultar_paises()),
-            )
-
-            continente = st.selectbox(
-                label="Selecione o continente",
-                placeholder="Digite o nome do continente",
-                options=(
-                    self.connection_db.controler_continente.consultar_continentes()
-                ),
-            )
-
-            vacina = st.text_input(label="Nome da vacina obrigatória")
-            grupo_de_risco = st.text_input(label="Grupo de risco")
-
-            if pais and continente and vacina and grupo_de_risco:
-                sucesso_cadastro = (
-                    self.connection_db.controler_vacinas.cadastrar_vacina(
-                        nome_vacina=vacina,
-                        grupo_de_risco=grupo_de_risco,
-                        id_pais=pais_filtrado,
-                        id_continente=continente,
-                    )
+                pais = pais_filtrado = st.selectbox(
+                    label="Selecione o país",
+                    placeholder="Digite o nome do país",
+                    options=(self.connection_db.controler_pais.consultar_paises()),
+                    key="pais-cadastro"
                 )
-                if sucesso_cadastro:
-                    st.success("Vacina cadastrada com sucesso!")
-                    st.stop()
-                else:
-                    st.error("Ocorreu um erro inesperado ao cadastrar a vacina.")
-                    st.stop()
 
-            st.rerun()
+                continente = st.selectbox(
+                    label="Selecione o continente",
+                    placeholder="Digite o nome do continente",
+                    options=(
+                        self.connection_db.controler_continente.consultar_continentes()
+                    ),
+                    key="continente-cadastro"
+                )
+
+                vacina = st.text_input(label="Nome da vacina obrigatória")
+                grupo_de_risco = st.text_input(label="Grupo de risco")
+
+                if pais and continente and vacina and grupo_de_risco:
+                    sucesso_cadastro = (
+                        self.connection_db.controler_vacinas.cadastrar_vacina(
+                            nome_vacina=vacina,
+                            grupo_de_risco=grupo_de_risco,
+                            id_pais=pais_filtrado,
+                            id_continente=continente,
+                        )
+                    )
+                    if sucesso_cadastro:
+                        st.success("Vacina cadastrada com sucesso!")
+                    else:
+                        st.error("Ocorreu um erro inesperado ao cadastrar a vacina.")
 
         except Exception as e:
             st.error(
