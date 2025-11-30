@@ -18,12 +18,29 @@ class VacinasObrigatoriasPorPaisPage:
                 key="pais-filtrado-pesquisa",
             )
 
-            if pais_filtrado:
-                st.write(f"Selecionado: {pais_filtrado}")
+            nome_vacina_filtrado = st.text_input(
+                label="Digite o nome da vacina que deseja pesquisar",
+                placeholder="Digite o nome da vacina",
+                options=(self.connection_db.controler_vacinas.consultar_vacinas()),
+            )
 
+            if pais_filtrado:
                 resultado = (
                     self.connection_db.controler_vacinas.pesquisar_vacinas_por_país(
                         nome_país=pais_filtrado
+                    )
+                )
+
+                if not resultado[1]:
+                    st.write("Nenhuma vacina foi encontrada para o país selecionado.")
+                else:
+                    st.dataframe(data=resultado[0])
+
+            if nome_vacina_filtrado:
+                nome_vacina_filtrado = str(nome_vacina_filtrado).strip().title()
+                resultado = (
+                    self.connection_db.controler_vacinas.pesquisar_vacinas_por_nome(
+                        nome_vacina=nome_vacina_filtrado
                     )
                 )
 

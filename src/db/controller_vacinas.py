@@ -31,6 +31,15 @@ class ControlerVacinas:
             df = pd.read_sql(consulta, self._connection)
 
             df.drop(columns=["ID_PAIS"], inplace=True)
+            df.drop(columns=["ID"], inplace=True)
+
+            df.rename(
+                columns={
+                    "NOME_VACINA": "Nome da Vacina",
+                    "GRUPO_DE_RISCO": "Grupo de Risco",
+                },
+                inplace=True,
+            )
 
             return df
         except Exception as e:
@@ -57,32 +66,6 @@ class ControlerVacinas:
             df.drop(columns=["ID_PAIS"], inplace=True)
             df.drop(columns=["ID"], inplace=True)
 
-            return df, True
-        except Exception as e:
-            self._connection.rollback()
-            raise Exception(
-                f"Ocorreu um erro inesperado ao pesquisar vacinas por país | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
-            )
-
-    def pesquisar_vacinas_por_continente(self, nome_continente: str) -> bool:
-        """Pesquisar vacinas por continente"""
-        try:
-            consulta = f"""
-            SELECT v.id_pais,
-                p.nome AS pais,
-                c.nome AS continente,
-                v.nome_vacina,
-                v.grupo_de_risco
-            FROM VACINAS_OBRIGATORIAS_VIAGEM v
-            JOIN PAISES p ON p.id_pais = v.id_pais
-            JOIN CONTINENTES c ON c.id_continente = p.id_continente
-            WHERE c.nome = '{nome_continente}'
-            """
-
-            df = pd.read_sql(consulta, self._connection)
-
-            df.drop(columns=["ID_PAIS"], inplace=True)
-
             df.rename(
                 columns={
                     "NOME_VACINA": "Nome da Vacina",
@@ -91,11 +74,11 @@ class ControlerVacinas:
                 inplace=True,
             )
 
-            return df
+            return df, True
         except Exception as e:
             self._connection.rollback()
             raise Exception(
-                f"Ocorreu um erro inesperado ao pesquisar vacinas por continente | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
+                f"Ocorreu um erro inesperado ao pesquisar vacinas por país | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
             )
 
     def cadastrar_vacina(
