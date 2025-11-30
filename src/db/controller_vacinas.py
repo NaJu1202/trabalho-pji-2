@@ -52,6 +52,9 @@ class ControlerVacinas:
             df.drop(columns=["ID_PAIS"], inplace=True)
             df.drop(columns=["ID"], inplace=True)
 
+            if df.empty:
+                return "Nenhuma vacina foi encontrada"
+
             return df
         except Exception as e:
             self._connection.rollback()
@@ -92,3 +95,22 @@ class ControlerVacinas:
             raise Exception(
                 f"Ocorreu um erro inesperado ao pesquisar vacinas por continente | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
             )
+
+    def cadastrar_vacina(
+        self, nome_vacina: str, grupo_de_risco: str, id_pais: int, id_continente: int
+    ) -> bool:
+        """Inserir vacina"""
+        try:
+            cursor = self._connection.cursor()
+            cursor.execute(
+                "INSERT INTO VACINAS_OBRIGATORIAS_VIAGEM (NOME_VACINA, GRUPO_DE_RISCO, ID_PAIS, ID_CONTINENTE) VALUES (%s, %s, %s, %s)",
+                (nome_vacina, grupo_de_risco, id_pais, id_continente),
+            )
+            self._connection.commit()
+            return True
+        except Exception as e:
+            self._connection.rollback()
+            print(
+                f"Ocorreu um erro inesperado ao inserir vacina | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
+            )
+            return False
