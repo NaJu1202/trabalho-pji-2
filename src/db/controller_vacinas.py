@@ -14,7 +14,7 @@ class ControlerVacinas:
         try:
             cursor = self._connection.cursor()
             cursor.execute("SELECT * FROM VACINAS_OBRIGATORIAS_VIAGEM")
-            return tuple(row[1] for row in cursor.fetchall())
+            return tuple(row[2] for row in cursor.fetchall())
         except Exception as e:
             self._connection.rollback()
             raise Exception(
@@ -50,6 +50,9 @@ class ControlerVacinas:
             df = pd.read_sql(consulta, self._connection)
 
             df.drop(columns=["ID_PAIS"], inplace=True)
+            df.drop(columns=["ID"], inplace=True)
+
+            
 
             return df
         except Exception as e:
@@ -67,9 +70,9 @@ class ControlerVacinas:
                 c.nome AS continente,
                 v.nome_vacina,
                 v.grupo_de_risco
-            FROM vacinas_obrigatorias_viagem v
-            JOIN paises p ON p.id_pais = v.id_pais
-            JOIN continentes c ON c.id_continente = p.id_continente
+            FROM VACINAS_OBRIGATORIAS_VIAGEM v
+            JOIN PAISES p ON p.id_pais = v.id_pais
+            JOIN CONTINENTES c ON c.id_continente = p.id_continente
             WHERE c.nome = '{nome_continente}'
             """
 

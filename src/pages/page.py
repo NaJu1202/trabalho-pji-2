@@ -27,12 +27,6 @@ class VacinasObrigatoriasPorPaisPage:
                 ),
             )
 
-            nome_vacina_filtrado = st.text_input(
-                label="Digite o nome da vacina",
-                placeholder="Digite o nome da vacina",
-                options=(self.connection_db.controler_vacinas.consultar_vacinas()),
-            )
-
             if pais_filtrado:
                 st.write(f"Selecionado: {pais_filtrado}")
 
@@ -49,14 +43,6 @@ class VacinasObrigatoriasPorPaisPage:
                         nome_continente=continente_filtrado
                     )
                 )
-            elif nome_vacina_filtrado:
-                st.write(f"Selecionado: {nome_vacina_filtrado}")
-
-                st.dataframe(
-                    data=self.connection_db.controler_vacinas.pesquisar_vacinas_por_nome(
-                        nome_vacina=nome_vacina_filtrado
-                    )
-                )
 
         except Exception as e:
             st.error(
@@ -65,4 +51,5 @@ class VacinasObrigatoriasPorPaisPage:
 
 
 if __name__ == "__main__":
-    VacinasObrigatoriasPorPaisPage().page()
+    teste = VacinasObrigatoriasPorPaisPage()
+    teste.page()

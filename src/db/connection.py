@@ -24,10 +24,10 @@ class ConnectionDB:
         try:
             if self.__conection is None:
                 self.__conection = mysql.connector.connect(
-                    host=os.getenv("HOST_DB"),
-                    user=os.getenv("USER_DB"),
-                    password=os.getenv("PASSWORD_DB"),
-                    database=os.getenv("BANCO_DE_DADOS"),
+                    host="localhost",
+                    user="root",
+                    password="mysql",
+                    database="labdatabase",
                 )
 
             elif not self.__conection.is_connected():
@@ -35,10 +35,10 @@ class ConnectionDB:
                     self.__conection.reconnect(attempts=3, delay=2)
                 except Exception:
                     self.__conection = mysql.connector.connect(
-                        host=os.getenv("HOST_DB"),
-                        user=os.getenv("USER_DB"),
-                        password=os.getenv("PASSWORD_DB"),
-                        database=os.getenv("BANCO_DE_DADOS"),
+                        host="localhost",
+                        user="root",
+                        password="mysql",
+                        database="labdatabase",
                     )
 
             return self.__conection
