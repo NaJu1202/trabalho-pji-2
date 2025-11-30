@@ -1,3 +1,5 @@
+import pandas as pd
+import requests
 import streamlit as st
 
 from src.db.connection import ConnectionDB
@@ -11,35 +13,37 @@ class VacinasObrigatoriasPorPaisPage:
         try:
             st.title("Aqui você pode ver as vacinas obrigatorias filtrando por País")
 
+            response = requests.get("http://localhost:8000/paises").json()
+
             pais_filtrado = st.selectbox(
                 label="Selecione o país",
                 placeholder="Digite o nome do país",
-                options=(self.connection_db.controler_pais.consultar_paises()),
+                options=response["paises"],
                 key="pais-filtrado-pesquisa",
             )
 
             if pais_filtrado:
-                resultado = (
-                    self.connection_db.controler_vacinas.pesquisar_vacinas_por_país(
-                        nome_país=pais_filtrado
-                    )
-                )
+                response = requests.get(
+                    f"http://localhost:8000/vacinas?pais={pais_filtrado}"
+                ).json()
+                resultado = pd.DataFrame(response)
 
                 if not resultado[1]:
                     st.write("Nenhuma vacina foi encontrada para o país selecionado.")
                 else:
-                    df = resultado[0]  # já é seu dataframe
-
-                    configs = {col: st.column_config.TextColumn(width="medium") for col in df.columns}
+                    configs = {
+                        col: st.column_config.TextColumn(width="medium")
+                        for col in resultado.columns
+                    }
 
                     st.dataframe(
-                        df,
+                        resultado,
                         hide_index=True,
                         column_config=configs,
                     )
 
             st.markdown(
-            """
+                """
             <style>
             .st-key-btn-cadastro-de-vacina {
                 display: block;
@@ -50,14 +54,17 @@ class VacinasObrigatoriasPorPaisPage:
                 unsafe_allow_html=True,
             )
 
-            btn_cadastro = st.button(label="Deseja cadastrar uma vacina obrigatoria?", key="btn-cadastro-de-vacina")
+            btn_cadastro = st.button(
+                label="Deseja cadastrar uma vacina obrigatoria?",
+                key="btn-cadastro-de-vacina",
+            )
             if btn_cadastro:
                 st.title("Cadastrar uma nova vacina: ")
 
                 pais = pais_filtrado = st.selectbox(
                     label="Selecione o país",
                     placeholder="Digite o nome do país",
-                    options=(self.connection_db.controler_pais.consultar_paises()),
+                    options=response["paises"],
                     key="pais-cadastro",
                 )
 
@@ -65,14 +72,17 @@ class VacinasObrigatoriasPorPaisPage:
                 grupo_de_risco = st.text_input(label="Grupo de risco")
 
                 if pais and vacina and grupo_de_risco:
-                    sucesso_cadastro = (
-                        self.connection_db.controler_vacinas.cadastrar_vacina(
-                            nome_vacina=vacina,
-                            grupo_de_risco=grupo_de_risco,
-                            id_pais=pais_filtrado,
-                        )
-                    )
-                    if sucesso_cadastro:
+                    url = "http://localhost:8000/vacinas"
+
+                    payload = {
+                        "nome": vacina.title().strip(),
+                        "grupo": grupo_de_risco,
+                        "pais": pais,
+                    }
+
+                    response = requests.post(url, json=payload)
+
+                    if response.ok:
                         st.success("Vacina cadastrada com sucesso!")
                     else:
                         st.error("Ocorreu um erro inesperado ao cadastrar a vacina.")

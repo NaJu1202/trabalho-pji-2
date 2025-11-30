@@ -74,7 +74,7 @@ class ControlerVacinas:
                 inplace=True,
             )
 
-            return df, True
+            return df.to_dict("records"), True
         except Exception as e:
             self._connection.rollback()
             raise Exception(
