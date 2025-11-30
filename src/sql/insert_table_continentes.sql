@@ -1,7 +1,9 @@
-INSERT INTO continentes (nome) VALUES ('África');
-INSERT INTO continentes (nome) VALUES ('América do Norte');
-INSERT INTO continentes (nome) VALUES ('América do Sul');
-INSERT INTO continentes (nome) VALUES ('Ásia');
-INSERT INTO continentes (nome) VALUES ('Europa');
-INSERT INTO continentes (nome) VALUES ('Oceania');
-INSERT INTO continentes (nome) VALUES ('Antártida');
+INSERT INTO CONTINENTES (NOME) VALUES ('África');
+INSERT INTO CONTINENTES (NOME) VALUES ('América do Norte');
+INSERT INTO CONTINENTES (NOME) VALUES ('América do Sul');
+INSERT INTO CONTINENTES (NOME) VALUES ('Ásia');
+INSERT INTO CONTINENTES (NOME) VALUES ('Europa');
+INSERT INTO CONTINENTES (NOME) VALUES ('Oceania');
+INSERT INTO CONTINENTES (NOME) VALUES ('Antártida');
+
+COMMIT;

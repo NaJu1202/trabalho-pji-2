@@ -11,7 +11,9 @@ class ControlerContinente:
     def consultar_continentes(self) -> bool:
         """Inserir continente"""
         try:
-            pass
+            cursor = self._connection.cursor()
+            cursor.execute("SELECT * FROM CONTINENTES")
+            return tuple(row[1] for row in cursor.fetchall())
         except Exception as e:
             self._connection.rollback()
             raise Exception(
