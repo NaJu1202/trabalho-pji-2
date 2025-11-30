@@ -39,7 +39,9 @@ class ControlerVacinas:
                 f"Ocorreu um erro inesperado ao pesquisar vacinas por nome | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
             )
 
-    def pesquisar_vacinas_por_país(self, nome_país: str) -> tuple[pd.DataFrame | None, bool]:
+    def pesquisar_vacinas_por_país(
+        self, nome_país: str
+    ) -> tuple[pd.DataFrame | None, bool]:
         """Pesquisar vacinas por país"""
         try:
             consulta = f"""SELECT * 
@@ -51,7 +53,7 @@ class ControlerVacinas:
 
             if df.empty:
                 return None, False
-            
+
             df.drop(columns=["ID_PAIS"], inplace=True)
             df.drop(columns=["ID"], inplace=True)
 
@@ -97,14 +99,22 @@ class ControlerVacinas:
             )
 
     def cadastrar_vacina(
-        self, nome_vacina: str, grupo_de_risco: str, id_pais: int, id_continente: int
+        self, nome_vacina: str, grupo_de_risco: str, pais: str
     ) -> bool:
         """Inserir vacina"""
         try:
             cursor = self._connection.cursor()
+
             cursor.execute(
-                "INSERT INTO VACINAS_OBRIGATORIAS_VIAGEM (NOME_VACINA, GRUPO_DE_RISCO, ID_PAIS, ID_CONTINENTE) VALUES (%s, %s, %s, %s)",
-                (nome_vacina, grupo_de_risco, id_pais, id_continente),
+                "SELECT ID_PAIS FROM PAISES WHERE NOME = %s",
+                (pais,),
+            )
+
+            id_pais = cursor.fetchone()[0]
+
+            cursor.execute(
+                "INSERT INTO VACINAS_OBRIGATORIAS_VIAGEM (NOME_VACINA, GRUPO_DE_RISCO, ID_PAIS) VALUES (%s, %s, %s)",
+                (nome_vacina, grupo_de_risco, id_pais),
             )
             self._connection.commit()
             return True

@@ -15,7 +15,7 @@ class VacinasObrigatoriasPorPaisPage:
                 label="Selecione o país",
                 placeholder="Digite o nome do país",
                 options=(self.connection_db.controler_pais.consultar_paises()),
-                key="pais-filtrado-pesquisa"
+                key="pais-filtrado-pesquisa",
             )
 
             if pais_filtrado:
@@ -40,28 +40,18 @@ class VacinasObrigatoriasPorPaisPage:
                     label="Selecione o país",
                     placeholder="Digite o nome do país",
                     options=(self.connection_db.controler_pais.consultar_paises()),
-                    key="pais-cadastro"
-                )
-
-                continente = st.selectbox(
-                    label="Selecione o continente",
-                    placeholder="Digite o nome do continente",
-                    options=(
-                        self.connection_db.controler_continente.consultar_continentes()
-                    ),
-                    key="continente-cadastro"
+                    key="pais-cadastro",
                 )
 
                 vacina = st.text_input(label="Nome da vacina obrigatória")
                 grupo_de_risco = st.text_input(label="Grupo de risco")
 
-                if pais and continente and vacina and grupo_de_risco:
+                if pais and vacina and grupo_de_risco:
                     sucesso_cadastro = (
                         self.connection_db.controler_vacinas.cadastrar_vacina(
                             nome_vacina=vacina,
                             grupo_de_risco=grupo_de_risco,
                             id_pais=pais_filtrado,
-                            id_continente=continente,
                         )
                     )
                     if sucesso_cadastro:
