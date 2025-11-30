@@ -52,8 +52,6 @@ class ControlerVacinas:
             df.drop(columns=["ID_PAIS"], inplace=True)
             df.drop(columns=["ID"], inplace=True)
 
-            
-
             return df
         except Exception as e:
             self._connection.rollback()
@@ -79,6 +77,14 @@ class ControlerVacinas:
             df = pd.read_sql(consulta, self._connection)
 
             df.drop(columns=["ID_PAIS"], inplace=True)
+
+            df.rename(
+                columns={
+                    "NOME_VACINA": "Nome da Vacina",
+                    "GRUPO_DE_RISCO": "Grupo de Risco",
+                },
+                inplace=True,
+            )
 
             return df
         except Exception as e:
