@@ -1,61 +1,198 @@
-INSERT INTO paises (nome, id_continente) VALUES
--- ÁFRICA (54 países)
-('África do Sul', 1), ('Angola', 1), ('Argélia', 1), ('Benin', 1), ('Botswana', 1),
-('Burquina Faso', 1), ('Burundi', 1), ('Cabo Verde', 1), ('Camarões', 1), ('Chade', 1),
-('Comores', 1), ('Congo', 1), ('Costa do Marfim', 1), ('Djibuti', 1), ('Egito', 1),
-('Eritreia', 1), ('Eswatini', 1), ('Etiópia', 1), ('Gabão', 1), ('Gâmbia', 1),
-('Gana', 1), ('Guiné', 1), ('Guiné Equatorial', 1), ('Guiné-Bissau', 1), ('Lesoto', 1),
-('Libéria', 1), ('Líbia', 1), ('Madagascar', 1), ('Malawi', 1), ('Mali', 1),
-('Marrocos', 1), ('Maurício', 1), ('Mauritânia', 1), ('Moçambique', 1), ('Namíbia', 1),
-('Níger', 1), ('Nigéria', 1), ('Quênia', 1), ('República Centro-Africana', 1),
-('República Democrática do Congo', 1), ('Ruanda', 1), ('São Tomé e Príncipe', 1),
-('Senegal', 1), ('Serra Leoa', 1), ('Seychelles', 1), ('Somália', 1), ('Sudão', 1),
-('Sudão do Sul', 1), ('Tanzânia', 1), ('Togo', 1), ('Tunísia', 1), ('Uganda', 1),
-('Zâmbia', 1), ('Zimbábue', 1),
+INSERT INTO paises (nome, id_continente) VALUES ('África do Sul', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Angola', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Argélia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Benin', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Botswana', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Burquina Faso', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Burundi', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Cabo Verde', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Camarões', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Chade', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Comores', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Congo', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Costa do Marfim', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Djibuti', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Egito', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Eritreia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Eswatini', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Etiópia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Gabão', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Gâmbia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Gana', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Guiné', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Guiné Equatorial', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Guiné-Bissau', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Lesoto', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Libéria', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Líbia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Madagascar', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Malawi', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Mali', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Marrocos', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Maurício', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Mauritânia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Moçambique', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Namíbia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Níger', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Nigéria', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Quênia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('República Centro-Africana', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('República Democrática do Congo', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Ruanda', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('São Tomé e Príncipe', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Senegal', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Serra Leoa', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Seychelles', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Somália', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Sudão', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Sudão do Sul', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Tanzânia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Togo', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Tunísia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Uganda', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Zâmbia', 1);
+INSERT INTO paises (nome, id_continente) VALUES ('Zimbábue', 1);
 
--- AMÉRICA DO NORTE (23 países)
-('Antígua e Barbuda', 2), ('Bahamas', 2), ('Barbados', 2), ('Belize', 2),
-('Canadá', 2), ('Costa Rica', 2), ('Cuba', 2), ('Dominica', 2),
-('El Salvador', 2), ('Estados Unidos', 2), ('Granada', 2), ('Guatemala', 2),
-('Haiti', 2), ('Honduras', 2), ('Jamaica', 2), ('México', 2),
-('Nicarágua', 2), ('Panamá', 2), ('República Dominicana', 2),
-('São Cristóvão e Névis', 2), ('Santa Lúcia', 2), ('São Vicente e Granadinas', 2),
-('Trinidad e Tobago', 2),
+INSERT INTO paises (nome, id_continente) VALUES ('Antígua e Barbuda', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Bahamas', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Barbados', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Belize', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Canadá', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Costa Rica', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Cuba', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Dominica', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('El Salvador', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Estados Unidos', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Granada', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Guatemala', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Haiti', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Honduras', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Jamaica', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('México', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Nicarágua', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Panamá', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('República Dominicana', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('São Cristóvão e Névis', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Santa Lúcia', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('São Vicente e Granadinas', 2);
+INSERT INTO paises (nome, id_continente) VALUES ('Trinidad e Tobago', 2);
 
--- AMÉRICA DO SUL (12 países)
-('Argentina', 3), ('Bolívia', 3), ('Brasil', 3), ('Chile', 3), ('Colômbia', 3),
-('Equador', 3), ('Guiana', 3), ('Guiana Francesa', 3), ('Paraguai', 3),
-('Peru', 3), ('Suriname', 3), ('Uruguai', 3), ('Venezuela', 3),
+INSERT INTO paises (nome, id_continente) VALUES ('Argentina', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Bolívia', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Brasil', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Chile', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Colômbia', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Equador', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Guiana', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Guiana Francesa', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Paraguai', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Peru', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Suriname', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Uruguai', 3);
+INSERT INTO paises (nome, id_continente) VALUES ('Venezuela', 3);
 
--- ÁSIA (48 países)
-('Afeganistão', 4), ('Arábia Saudita', 4), ('Armênia', 4), ('Azerbaijão', 4),
-('Bahrein', 4), ('Bangladesh', 4), ('Brunei', 4), ('Butão', 4), ('Camboja', 4),
-('Catar', 4), ('Cazaquistão', 4), ('China', 4), ('Chipre', 4), ('Coreia do Norte', 4),
-('Coreia do Sul', 4), ('Emirados Árabes Unidos', 4), ('Filipinas', 4), ('Geórgia', 4),
-('Iêmen', 4), ('Índia', 4), ('Indonésia', 4), ('Irã', 4), ('Iraque', 4),
-('Israel', 4), ('Japão', 4), ('Jordânia', 4), ('Kuwait', 4), ('Laos', 4),
-('Líbano', 4), ('Malásia', 4), ('Maldivas', 4), ('Mongólia', 4), ('Myanmar', 4),
-('Nepal', 4), ('Omã', 4), ('Paquistão', 4), ('Quirguistão', 4), ('Singapura', 4),
-('Síria', 4), ('Sri Lanka', 4), ('Tajiquistão', 4), ('Tailândia', 4),
-('Timor-Leste', 4), ('Turcomenistão', 4), ('Turquia', 4),
-('Uzbequistão', 4), ('Vietnã', 4),
+INSERT INTO paises (nome, id_continente) VALUES ('Afeganistão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Arábia Saudita', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Armênia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Azerbaijão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Bahrein', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Bangladesh', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Brunei', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Butão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Camboja', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Catar', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Cazaquistão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('China', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Chipre', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Coreia do Norte', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Coreia do Sul', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Emirados Árabes Unidos', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Filipinas', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Geórgia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Iêmen', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Índia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Indonésia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Irã', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Iraque', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Israel', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Japão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Jordânia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Kuwait', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Laos', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Líbano', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Malásia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Maldivas', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Mongólia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Myanmar', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Nepal', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Omã', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Paquistão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Quirguistão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Singapura', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Síria', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Sri Lanka', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Tajiquistão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Tailândia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Timor-Leste', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Turcomenistão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Turquia', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Uzbequistão', 4);
+INSERT INTO paises (nome, id_continente) VALUES ('Vietnã', 4);
 
--- EUROPA (44 países)
-('Albânia', 5), ('Alemanha', 5), ('Andorra', 5), ('Áustria', 5), ('Bélgica', 5),
-('Bielorrússia', 5), ('Bósnia e Herzegovina', 5), ('Bulgária', 5), ('Croácia', 5),
-('Dinamarca', 5), ('Eslováquia', 5), ('Eslovênia', 5), ('Espanha', 5),
-('Estônia', 5), ('Finlândia', 5), ('França', 5), ('Grécia', 5), ('Hungria', 5),
-('Islândia', 5), ('Itália', 5), ('Letônia', 5), ('Liechtenstein', 5), ('Lituânia', 5),
-('Luxemburgo', 5), ('Malta', 5), ('Moldávia', 5), ('Mônaco', 5), ('Montenegro', 5),
-('Noruega', 5), ('Países Baixos', 5), ('Polônia', 5), ('Portugal', 5),
-('Reino Unido', 5), ('República Checa', 5), ('Romênia', 5), ('Rússia', 5),
-('San Marino', 5), ('Sérvia', 5), ('Suécia', 5), ('Suíça', 5),
-('Ucrânia', 5), ('Vaticano', 5),
+INSERT INTO paises (nome, id_continente) VALUES ('Albânia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Alemanha', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Andorra', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Áustria', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Bélgica', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Bielorrússia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Bósnia e Herzegovina', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Bulgária', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Croácia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Dinamarca', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Eslováquia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Eslovênia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Espanha', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Estônia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Finlândia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('França', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Grécia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Hungria', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Islândia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Itália', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Letônia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Liechtenstein', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Lituânia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Luxemburgo', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Malta', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Moldávia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Mônaco', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Montenegro', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Noruega', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Países Baixos', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Polônia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Portugal', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Reino Unido', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('República Checa', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Romênia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Rússia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('San Marino', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Sérvia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Suécia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Suíça', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Ucrânia', 5);
+INSERT INTO paises (nome, id_continente) VALUES ('Vaticano', 5);
 
--- OCEANIA (14 países)
-('Austrália', 6), ('Fiji', 6), ('Ilhas Marshall', 6), ('Ilhas Salomão', 6),
-('Kiribati', 6), ('Micronésia', 6), ('Nauru', 6), ('Nova Zelândia', 6),
-('Palau', 6), ('Papua-Nova Guiné', 6), ('Samoa', 6), ('Tonga', 6), ('Tuvalu', 6),
-('Vanuatu', 6);
-
--- ANTÁRTIDA (sem países)
+INSERT INTO paises (nome, id_continente) VALUES ('Austrália', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Fiji', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Ilhas Marshall', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Ilhas Salomão', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Kiribati', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Micronésia', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Nauru', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Nova Zelândia', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Palau', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Papua-Nova Guiné', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Samoa', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Tonga', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Tuvalu', 6);
+INSERT INTO paises (nome, id_continente) VALUES ('Vanuatu', 6);
