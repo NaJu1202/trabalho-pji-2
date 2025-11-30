@@ -1,0 +1,13 @@
+[project]
+name = "trabalho-pji-2"
+version = "0.1.0"
+description = "trabalho de projeto integrador 2"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.123.0",
+    "httpx>=0.28.1",
+    "mysql-connector-python>=9.5.0",
+    "streamlit>=1.51.0",
+    "uvicorn>=0.38.0",
+]
