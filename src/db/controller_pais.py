@@ -8,8 +8,6 @@ class ControlerPais:
         """Inicializa o objeto ControlerCliente com uma conexão com o banco de dados"""
         self._connection = connection
 
-        self.executar_sql_arquivo()
-
     def executar_sql_arquivo(self):
         caminhos_arquivo = [
             "src\sql\create_tables.sql",
