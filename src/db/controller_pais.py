@@ -8,6 +8,24 @@ class ControlerPais:
         """Inicializa o objeto ControlerCliente com uma conexão com o banco de dados"""
         self._connection = connection
 
+        self.executar_sql_arquivo()
+
+    def executar_sql_arquivo(self):
+        caminhos_arquivo = [
+            "src\sql\create_tables.sql",
+            "src\sql\insert_table_continentes.sql",
+            "src\sql\insert_table_paises.sql",
+            "src\sql\insert_table_vacinas_obrigatorias.sql",
+        ]
+        for caminho in caminhos_arquivo:
+            with open(caminho, "r", encoding="utf-8") as f:
+                sql_script = f.read()
+
+            cursor = self._connection.cursor()
+            cursor.executescript(sql_script)
+
+        self._connection.commit()
+
     def consultar_paises(self) -> tuple:
         """Consultar todos os paises cadastrados"""
         try:
