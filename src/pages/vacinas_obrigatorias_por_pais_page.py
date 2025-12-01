@@ -1,5 +1,3 @@
-import pandas as pd
-import requests
 import streamlit as st
 
 from src.db.connection import ConnectionDB
@@ -13,33 +11,32 @@ class VacinasObrigatoriasPorPaisPage:
         try:
             st.title("Aqui você pode ver as vacinas obrigatorias filtrando por País")
 
-            response_paises = requests.get("http://localhost:8000/paises").json()
-
             pais_filtrado = st.selectbox(
                 label="Selecione o país",
                 placeholder="Digite o nome do país",
-                options=[""] + response_paises["paises"],
+                options=(self.connection_db.controler_pais.consultar_paises()),
                 key="pais-filtrado-pesquisa",
             )
 
             if pais_filtrado:
-                response = requests.get(
-                    f"http://localhost:8000/vacinas?pais={pais_filtrado}"
-                ).json()
+                resultado = (
+                    self.connection_db.controler_vacinas.pesquisar_vacinas_por_país(
+                        nome_país=pais_filtrado
+                    )
+                )
 
-                resultado = response.get(pais_filtrado)[1]
-
-                if not resultado:
+                if not resultado[1]:
                     st.write("Nenhuma vacina foi encontrada para o país selecionado.")
                 else:
-                    resultado = pd.DataFrame(response.get(pais_filtrado)[0])
+                    df = resultado[0]  # já é seu dataframe
+
                     configs = {
                         col: st.column_config.TextColumn(width="medium")
-                        for col in resultado.columns
+                        for col in df.columns
                     }
 
                     st.dataframe(
-                        resultado,
+                        df,
                         hide_index=True,
                         column_config=configs,
                     )
@@ -66,49 +63,25 @@ class VacinasObrigatoriasPorPaisPage:
                 pais = st.selectbox(
                     label="Selecione o país",
                     placeholder="Digite o nome do país",
-                    options=response_paises["paises"],
+                    options=(self.connection_db.controler_pais.consultar_paises()),
                     key="pais-cadastro",
                 )
 
                 vacina = st.text_input(label="Nome da vacina obrigatória")
                 grupo_de_risco = st.text_input(label="Grupo de risco")
 
-                st.markdown(
-                    """
-                <style>
-                .st-key-btn-confirmar-cadastro-de-vacina {
-                    display: block;
-                    margin: 0 auto;
-                }
-                </style>
-                """,
-                    unsafe_allow_html=True,
-                )
-
-                btn_cadastro = st.button(
-                    label="Consfirmar cadastro",
-                    key="btn-confirmar-cadastro-de-vacina",
-                )
-
                 if pais and vacina and grupo_de_risco:
-                    url = "http://localhost:8000/vacinas"
-
-                    payload = {
-                        "nome": vacina.title().strip(),
-                        "grupo": grupo_de_risco,
-                        "pais": pais,
-                    }
-
-                    response = requests.post(url, json=payload)
-
-                    if response.ok:
+                    sucesso_cadastro = (
+                        self.connection_db.controler_vacinas.cadastrar_vacina(
+                            nome_vacina=vacina,
+                            grupo_de_risco=grupo_de_risco,
+                            id_pais=pais_filtrado,
+                        )
+                    )
+                    if sucesso_cadastro:
                         st.success("Vacina cadastrada com sucesso!")
                     else:
                         st.error("Ocorreu um erro inesperado ao cadastrar a vacina.")
-
-            btn_recarregar = st.button(label="Recarregar", key="btn-recarregar")
-            if btn_recarregar:
-                st.rerun()
 
         except Exception as e:
             st.error(

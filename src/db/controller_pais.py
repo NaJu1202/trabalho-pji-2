@@ -13,7 +13,7 @@ class ControlerPais:
         try:
             cursor = self._connection.cursor()
             cursor.execute("SELECT * FROM PAISES")
-            return list(row[1] for row in cursor.fetchall())
+            return tuple(row[1] for row in cursor.fetchall())
         except Exception as e:
             self._connection.rollback()
             raise Exception(
