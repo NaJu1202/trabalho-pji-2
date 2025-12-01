@@ -48,14 +48,14 @@ class ControlerVacinas:
                 f"Ocorreu um erro inesperado ao pesquisar vacinas por nome | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
             )
 
-    def pesquisar_vacinas_por_país(
-        self, nome_país: str
+    def pesquisar_vacinas_por_pais(
+        self, nome_pais: str
     ) -> tuple[pd.DataFrame | None, bool]:
         """Pesquisar vacinas por país"""
         try:
             consulta = f"""SELECT * 
             FROM VACINAS_OBRIGATORIAS_VIAGEM
-            WHERE ID_PAIS = (SELECT ID_PAIS FROM PAISES WHERE NOME = '{nome_país}')
+            WHERE ID_PAIS = (SELECT ID_PAIS FROM PAISES WHERE NOME = '{nome_pais}')
             """
 
             df = pd.read_sql(consulta, self._connection)

@@ -24,8 +24,10 @@ def listar_paises():
 
 
 @app.get("/vacinas")
-def pesquisar_vacinas_por_país(pais: str):
-    return db.controler_vacinas.pesquisar_vacinas_por_pais(nome_país=pais)
+def pesquisar_vacinas(pais: str):
+    resultado = db.controler_vacinas.pesquisar_vacinas_por_pais(nome_pais=pais)
+
+    return {pais: resultado}
 
 
 @app.post("/vacinas")

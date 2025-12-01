@@ -13,12 +13,12 @@ class VacinasObrigatoriasPorPaisPage:
         try:
             st.title("Aqui você pode ver as vacinas obrigatorias filtrando por País")
 
-            response = requests.get("http://localhost:8000/paises").json()
+            response_paises = requests.get("http://localhost:8000/paises").json()
 
             pais_filtrado = st.selectbox(
                 label="Selecione o país",
                 placeholder="Digite o nome do país",
-                options=response["paises"],
+                options=[""] + response_paises["paises"],
                 key="pais-filtrado-pesquisa",
             )
 
@@ -26,11 +26,13 @@ class VacinasObrigatoriasPorPaisPage:
                 response = requests.get(
                     f"http://localhost:8000/vacinas?pais={pais_filtrado}"
                 ).json()
-                resultado = pd.DataFrame(response)
 
-                if not resultado[1]:
+                resultado = response.get(pais_filtrado)[1]
+
+                if not resultado:
                     st.write("Nenhuma vacina foi encontrada para o país selecionado.")
                 else:
+                    resultado = pd.DataFrame(response.get(pais_filtrado)[0])
                     configs = {
                         col: st.column_config.TextColumn(width="medium")
                         for col in resultado.columns
@@ -64,12 +66,29 @@ class VacinasObrigatoriasPorPaisPage:
                 pais = pais_filtrado = st.selectbox(
                     label="Selecione o país",
                     placeholder="Digite o nome do país",
-                    options=response["paises"],
+                    options=response_paises["paises"],
                     key="pais-cadastro",
                 )
 
                 vacina = st.text_input(label="Nome da vacina obrigatória")
                 grupo_de_risco = st.text_input(label="Grupo de risco")
+
+                st.markdown(
+                """
+                <style>
+                .st-key-btn-confirmar-cadastro-de-vacina {
+                    display: block;
+                    margin: 0 auto;
+                }
+                </style>
+                """,
+                    unsafe_allow_html=True,
+                )
+
+                btn_cadastro = st.button(
+                    label="Consfirmar cadastro",
+                    key="btn-confirmar-cadastro-de-vacina",
+                )
 
                 if pais and vacina and grupo_de_risco:
                     url = "http://localhost:8000/vacinas"
@@ -86,7 +105,6 @@ class VacinasObrigatoriasPorPaisPage:
                         st.success("Vacina cadastrada com sucesso!")
                     else:
                         st.error("Ocorreu um erro inesperado ao cadastrar a vacina.")
-
         except Exception as e:
             st.error(
                 f"Ocorreu um erro inesperado | Linha: {e.__traceback__.tb_lineno} | {str(e)}"

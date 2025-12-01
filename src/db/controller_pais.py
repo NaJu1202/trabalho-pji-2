@@ -12,7 +12,7 @@ class ControlerPais:
         """Consultar todos os paises cadastrados"""
         try:
             cursor = self._connection.cursor()
-            cursor.execute("SELECT * FROM PAIS")
+            cursor.execute("SELECT * FROM PAISES")
             return list(row[1] for row in cursor.fetchall())
         except Exception as e:
             self._connection.rollback()
