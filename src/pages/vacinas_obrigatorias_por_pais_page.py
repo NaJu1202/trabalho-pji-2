@@ -63,7 +63,7 @@ class VacinasObrigatoriasPorPaisPage:
             if btn_cadastro:
                 st.title("Cadastrar uma nova vacina: ")
 
-                pais = pais_filtrado = st.selectbox(
+                pais = st.selectbox(
                     label="Selecione o país",
                     placeholder="Digite o nome do país",
                     options=response_paises["paises"],
@@ -74,7 +74,7 @@ class VacinasObrigatoriasPorPaisPage:
                 grupo_de_risco = st.text_input(label="Grupo de risco")
 
                 st.markdown(
-                """
+                    """
                 <style>
                 .st-key-btn-confirmar-cadastro-de-vacina {
                     display: block;
@@ -105,6 +105,11 @@ class VacinasObrigatoriasPorPaisPage:
                         st.success("Vacina cadastrada com sucesso!")
                     else:
                         st.error("Ocorreu um erro inesperado ao cadastrar a vacina.")
+
+            btn_recarregar = st.button(label="Recarregar", key="btn-recarregar")
+            if btn_recarregar:
+                st.rerun()
+
         except Exception as e:
             st.error(
                 f"Ocorreu um erro inesperado | Linha: {e.__traceback__.tb_lineno} | {str(e)}"
